@@ -1,0 +1,15 @@
+numpy==2.4.6
+pandas==2.3.3
+scikit-learn==1.9.0
+xgboost==3.2.0
+lightgbm==4.6.0
+scipy==1.16.3
+joblib==1.5.3
+shap==0.52.0
+statsmodels==0.14.6
+matplotlib==3.10.9
+seaborn==0.13.2
+PyYAML==6.0.3
+openpyxl==3.1.5
+python-docx==1.2.0
+pyarrow==24.0.0

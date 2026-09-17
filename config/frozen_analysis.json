@@ -1,0 +1,1297 @@
+{
+  "model_version": "FINAL_MODEL_LOCK_v1.1",
+  "data_version": "modeling-v1.2-single-patient-CBC-QC",
+  "initial": [
+    "age",
+    "sex",
+    "SCr_mg_dL",
+    "eGFRcr_2021",
+    "WBC",
+    "RBC",
+    "HGB",
+    "HCT",
+    "MCV",
+    "MCH",
+    "MCHC",
+    "RDW",
+    "PLT",
+    "NEUT#",
+    "LYMPH#",
+    "MONO#",
+    "EO#",
+    "BASO#",
+    "NEUT%",
+    "LYMPH%",
+    "MONO%",
+    "EO%",
+    "BASO%",
+    "MPV",
+    "BUN",
+    "UA",
+    "ALB",
+    "TP",
+    "GLB",
+    "A/G",
+    "ALT",
+    "AST",
+    "ALP",
+    "GGT",
+    "TBIL",
+    "Na",
+    "K",
+    "Cl",
+    "Ca",
+    "GLU",
+    "LDH",
+    "P",
+    "CO2",
+    "HbA1c",
+    "TC",
+    "HDL-C",
+    "LDL-C",
+    "TG",
+    "Non-HDL-C"
+  ],
+  "pre_redundancy": [
+    "age",
+    "sex",
+    "eGFRcr_2021",
+    "WBC",
+    "RBC",
+    "HGB",
+    "HCT",
+    "MCV",
+    "MCH",
+    "MCHC",
+    "RDW",
+    "PLT",
+    "NEUT#",
+    "LYMPH#",
+    "MONO#",
+    "EO#",
+    "BASO#",
+    "NEUT%",
+    "LYMPH%",
+    "MONO%",
+    "EO%",
+    "BASO%",
+    "MPV",
+    "BUN",
+    "UA",
+    "ALB",
+    "TP",
+    "GLB",
+    "A/G",
+    "ALT",
+    "AST",
+    "ALP",
+    "GGT",
+    "TBIL",
+    "Na",
+    "K",
+    "Cl",
+    "Ca",
+    "GLU"
+  ],
+  "full": [
+    "age",
+    "sex",
+    "eGFRcr_2021",
+    "HGB",
+    "MCV",
+    "MCHC",
+    "RDW",
+    "PLT",
+    "MPV",
+    "NEUT#",
+    "LYMPH#",
+    "MONO#",
+    "EO#",
+    "BASO#",
+    "BUN",
+    "UA",
+    "ALB",
+    "A/G",
+    "ALT",
+    "AST",
+    "ALP",
+    "GGT",
+    "TBIL",
+    "Na",
+    "K",
+    "Cl",
+    "Ca",
+    "GLU"
+  ],
+  "redundancy_reasons": {
+    "RBC": "Overlapping erythrocyte information; retain HGB",
+    "HCT": "Overlapping erythrocyte information; retain HGB",
+    "MCH": "Highly correlated with MCV; retain MCV and MCHC as distinct red-cell index dimensions",
+    "WBC": "Overlaps leukocyte absolute counts, especially NEUT#; retain differential absolute counts",
+    "NEUT%": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+    "LYMPH%": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+    "MONO%": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+    "EO%": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+    "BASO%": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+    "TP": "Shared protein information system; retain ALB and unified A/G",
+    "GLB": "Shared protein information system; retain ALB and unified A/G"
+  },
+  "final": [
+    "age",
+    "sex",
+    "eGFRcr_2021",
+    "HGB",
+    "PLT",
+    "BUN",
+    "ALB",
+    "ALP",
+    "GLU"
+  ],
+  "core": [
+    "age",
+    "sex",
+    "eGFRcr_2021"
+  ],
+  "model_params": {
+    "Baseline": {
+      "C": 1.0,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "l1_ratio": 0.0,
+      "max_iter": 10000,
+      "penalty": "l2",
+      "random_state": 42,
+      "solver": "liblinear",
+      "tol": 0.0001,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "LR": {
+      "C": 1,
+      "dual": false,
+      "fit_intercept": true,
+      "intercept_scaling": 1,
+      "l1_ratio": 0.0,
+      "max_iter": 10000,
+      "penalty": "l1",
+      "random_state": 42,
+      "solver": "liblinear",
+      "tol": 0.0001,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "SVM": {
+      "C": 1,
+      "break_ties": false,
+      "cache_size": 512,
+      "coef0": 0.0,
+      "decision_function_shape": "ovr",
+      "degree": 3,
+      "gamma": "scale",
+      "kernel": "rbf",
+      "max_iter": -1,
+      "probability": true,
+      "random_state": 42,
+      "shrinking": true,
+      "tol": 0.001,
+      "verbose": false
+    },
+    "KNN": {
+      "algorithm": "auto",
+      "leaf_size": 30,
+      "metric": "minkowski",
+      "n_jobs": 2,
+      "n_neighbors": 45,
+      "p": 1,
+      "weights": "distance"
+    },
+    "DT": {
+      "ccp_alpha": 0.0,
+      "criterion": "entropy",
+      "max_depth": 5,
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 10,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "random_state": 42,
+      "splitter": "best"
+    },
+    "RF": {
+      "bootstrap": true,
+      "ccp_alpha": 0.0,
+      "criterion": "gini",
+      "max_depth": 5,
+      "max_features": "sqrt",
+      "min_impurity_decrease": 0.0,
+      "min_samples_leaf": 5,
+      "min_samples_split": 2,
+      "min_weight_fraction_leaf": 0.0,
+      "n_estimators": 300,
+      "n_jobs": 2,
+      "oob_score": false,
+      "random_state": 42,
+      "verbose": 0,
+      "warm_start": false
+    },
+    "XGBoost": {
+      "objective": "binary:logistic",
+      "colsample_bytree": 0.8,
+      "enable_categorical": false,
+      "eval_metric": "logloss",
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_child_weight": 1,
+      "n_estimators": 300,
+      "n_jobs": 2,
+      "random_state": 42,
+      "reg_lambda": 1,
+      "scale_pos_weight": 1,
+      "subsample": 0.8,
+      "tree_method": "hist"
+    },
+    "LightGBM": {
+      "boosting_type": "gbdt",
+      "colsample_bytree": 0.8,
+      "importance_type": "split",
+      "learning_rate": 0.03,
+      "max_depth": -1,
+      "min_child_samples": 20,
+      "min_child_weight": 0.001,
+      "min_split_gain": 0.0,
+      "n_estimators": 150,
+      "n_jobs": 2,
+      "num_leaves": 15,
+      "objective": "binary",
+      "random_state": 42,
+      "reg_alpha": 0.0,
+      "reg_lambda": 0.0,
+      "subsample": 0.8,
+      "subsample_for_bin": 200000,
+      "subsample_freq": 1,
+      "verbose": -1,
+      "is_unbalance": false,
+      "scale_pos_weight": 1,
+      "verbosity": -1
+    }
+  },
+  "cv": {
+    "n_splits": 5,
+    "shuffle": true,
+    "random_state": 42
+  },
+  "repeat_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51
+  ],
+  "bootstrap_replicates": 2000,
+  "bootstrap_seeds": {
+    "development": 42,
+    "external": 43
+  },
+  "threshold": {
+    "mode": "none"
+  },
+  "budgets": [
+    10,
+    20,
+    30,
+    40,
+    50
+  ],
+  "missingness_limit": 0.25,
+  "tolerance": 0.01,
+  "expected": {
+    "development": {
+      "n": 1170,
+      "events": 214
+    },
+    "external": {
+      "n": 1619,
+      "events": 112
+    }
+  },
+  "candidates": [
+    "XGBoost",
+    "RF"
+  ],
+  "expected_missingness_exclusions": [
+    "LDH",
+    "P",
+    "HbA1c",
+    "TC",
+    "HDL-C",
+    "LDL-C",
+    "TG",
+    "Non-HDL-C"
+  ],
+  "variable_dictionary": [
+    {
+      "name": "age",
+      "unit": "years",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "sex",
+      "unit": "0/1",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "SCr_mg_dL",
+      "unit": "mg/dL",
+      "kind": "Derived",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D10 structural redundancy",
+      "frozen_exclusion_reason": "structural redundancy with mandatory eGFRcr core",
+      "formula": "Primary hospitals: SCr_original/88.4; NHANES historical standardization remains frozen | phenotype-v1.0"
+    },
+    {
+      "name": "eGFRcr_2021",
+      "unit": "mL/min/1.73m2",
+      "kind": "Derived",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "142*min(SCr/k,1)^alpha*max(SCr/k,1)^(-1.2)*0.9938^age*(1.012 if female); k=.7/.9 alpha=-.241/-.302 | phenotype-v1.0"
+    },
+    {
+      "name": "WBC",
+      "unit": "10^9/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Overlaps leukocyte absolute counts, especially NEUT#; retain differential absolute counts",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "RBC",
+      "unit": "10^12/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Overlapping erythrocyte information; retain HGB",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "HGB",
+      "unit": "g/L",
+      "kind": "Raw (unit-standardized)",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "HCT",
+      "unit": "%",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Overlapping erythrocyte information; retain HGB",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "MCV",
+      "unit": "fL",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "MCH",
+      "unit": "pg",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Highly correlated with MCV; retain MCV and MCHC as distinct red-cell index dimensions",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "MCHC",
+      "unit": "g/L",
+      "kind": "Raw (unit-standardized)",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "RDW",
+      "unit": "%",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "PLT",
+      "unit": "10^9/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "NEUT#",
+      "unit": "10^9/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "LYMPH#",
+      "unit": "10^9/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "MONO#",
+      "unit": "10^9/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "EO#",
+      "unit": "10^9/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "BASO#",
+      "unit": "10^9/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "NEUT%",
+      "unit": "%",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "LYMPH%",
+      "unit": "%",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "MONO%",
+      "unit": "%",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "EO%",
+      "unit": "%",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "BASO%",
+      "unit": "%",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Do not retain absolute count and percentage for the same cell series; use absolute counts",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "MPV",
+      "unit": "fL",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "BUN",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "UA",
+      "unit": "umol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "ALB",
+      "unit": "g/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "TP",
+      "unit": "g/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Shared protein information system; retain ALB and unified A/G",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "GLB",
+      "unit": "g/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D15 clinical / structural redundancy",
+      "frozen_exclusion_reason": "Shared protein information system; retain ALB and unified A/G",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "A/G",
+      "unit": "ratio",
+      "kind": "Derived",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "ALB / GLB; NA if either missing or GLB <=0 | AG-unified-v1.1"
+    },
+    {
+      "name": "ALT",
+      "unit": "U/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "AST",
+      "unit": "U/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "ALP",
+      "unit": "U/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "GGT",
+      "unit": "U/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "TBIL",
+      "unit": "umol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "Na",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "K",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "Cl",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "Ca",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "GLU",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "none",
+      "frozen_exclusion_reason": "none",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "LDH",
+      "unit": "U/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D8 missingness",
+      "frozen_exclusion_reason": "development missingness >25%",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "P",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "not harmonized",
+      "frozen_exclusion_stage": "D8 missingness",
+      "frozen_exclusion_reason": "development missingness >25%",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "CO2",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "uncertain",
+      "frozen_exclusion_stage": "D9 harmonization",
+      "frozen_exclusion_reason": "CO2 measurement equivalence uncertain",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "HbA1c",
+      "unit": "%",
+      "kind": "Raw",
+      "harmonization": "not harmonized",
+      "frozen_exclusion_stage": "D8 missingness",
+      "frozen_exclusion_reason": "external missingness >25%",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "TC",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D8 missingness",
+      "frozen_exclusion_reason": "external missingness >25%",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "HDL-C",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D8 missingness",
+      "frozen_exclusion_reason": "external missingness >25%",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "LDL-C",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "uncertain",
+      "frozen_exclusion_stage": "D8 missingness",
+      "frozen_exclusion_reason": "external missingness >25%",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "TG",
+      "unit": "mmol/L",
+      "kind": "Raw",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D8 missingness",
+      "frozen_exclusion_reason": "external missingness >25%",
+      "formula": "frozen source mapping | phenotype-v1.0 raw mapping"
+    },
+    {
+      "name": "Non-HDL-C",
+      "unit": "mmol/L",
+      "kind": "Derived (source-reported; not uniformly rebuilt)",
+      "harmonization": "harmonized",
+      "frozen_exclusion_stage": "D8 missingness",
+      "frozen_exclusion_reason": "development missingness >25%; external missingness >25%",
+      "formula": "TC - HDL-C | None"
+    }
+  ],
+  "source_field_aliases": [
+    {
+      "canonical": "WBC",
+      "unit": "10^9/L",
+      "group": "CBC",
+      "Wanbei": "WBC",
+      "Anyi": "白细胞计数",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "RBC",
+      "unit": "10^12/L",
+      "group": "CBC",
+      "Wanbei": "RBC",
+      "Anyi": "红细胞计数",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "HGB",
+      "unit": "g/L",
+      "group": "CBC",
+      "Wanbei": "HGB",
+      "Anyi": "血红蛋白",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "HCT",
+      "unit": "%",
+      "group": "CBC",
+      "Wanbei": "HCT",
+      "Anyi": "红细胞比容",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "MCV",
+      "unit": "fL",
+      "group": "CBC",
+      "Wanbei": "MCV",
+      "Anyi": "平均红细胞体积",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "MCH",
+      "unit": "pg",
+      "group": "CBC",
+      "Wanbei": "MCH",
+      "Anyi": "平均RBC血红蛋白含量",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "MCHC",
+      "unit": "g/L",
+      "group": "CBC",
+      "Wanbei": "MCHC",
+      "Anyi": "平均RBC血红蛋白浓度",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "RDW",
+      "unit": "%",
+      "group": "CBC",
+      "Wanbei": "RDW-CV",
+      "Anyi": "红细胞分布宽度-CV值",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "PLT",
+      "unit": "10^9/L",
+      "group": "CBC",
+      "Wanbei": "PLT",
+      "Anyi": "血小板计数",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "NEUT#",
+      "unit": "10^9/L",
+      "group": "CBC",
+      "Wanbei": "NEUT#",
+      "Anyi": "中性粒细胞绝对数",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "LYMPH#",
+      "unit": "10^9/L",
+      "group": "CBC",
+      "Wanbei": "LYMPH#",
+      "Anyi": "淋巴细胞绝对数",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "MONO#",
+      "unit": "10^9/L",
+      "group": "CBC",
+      "Wanbei": "MONO#",
+      "Anyi": "单核细胞绝对数",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "EO#",
+      "unit": "10^9/L",
+      "group": "CBC",
+      "Wanbei": "EO#",
+      "Anyi": "嗜酸性粒细胞绝对数",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "BASO#",
+      "unit": "10^9/L",
+      "group": "CBC",
+      "Wanbei": "BASO#",
+      "Anyi": "嗜碱性粒细胞绝对数",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "NEUT%",
+      "unit": "%",
+      "group": "CBC",
+      "Wanbei": "NEUT%",
+      "Anyi": "中性粒细胞百分比",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "LYMPH%",
+      "unit": "%",
+      "group": "CBC",
+      "Wanbei": "LYMPH%",
+      "Anyi": "淋巴细胞百分比",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "MONO%",
+      "unit": "%",
+      "group": "CBC",
+      "Wanbei": "MONO%",
+      "Anyi": "单核细胞百分比",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "EO%",
+      "unit": "%",
+      "group": "CBC",
+      "Wanbei": "EO%",
+      "Anyi": "嗜酸性粒细胞百分比",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "BASO%",
+      "unit": "%",
+      "group": "CBC",
+      "Wanbei": "BASO%",
+      "Anyi": "嗜碱性粒细胞百分比",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "MPV",
+      "unit": "fL",
+      "group": "CBC",
+      "Wanbei": "MPV",
+      "Anyi": "平均血小板体积",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "BUN",
+      "unit": "mmol/L",
+      "group": "biochem",
+      "Wanbei": "BUN",
+      "Anyi": "尿素",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "UA",
+      "unit": "umol/L",
+      "group": "biochem",
+      "Wanbei": "UA",
+      "Anyi": "尿酸",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "ALB",
+      "unit": "g/L",
+      "group": "biochem",
+      "Wanbei": "ALB",
+      "Anyi": "白蛋白",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "TP",
+      "unit": "g/L",
+      "group": "biochem",
+      "Wanbei": "TP",
+      "Anyi": "总蛋白",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "GLB",
+      "unit": "g/L",
+      "group": "biochem",
+      "Wanbei": "GLB",
+      "Anyi": "球蛋白",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "A/G",
+      "unit": "ratio",
+      "group": "biochem",
+      "Wanbei": "A/G",
+      "Anyi": "白/球比例",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "ALT",
+      "unit": "U/L",
+      "group": "biochem",
+      "Wanbei": "ALT",
+      "Anyi": "丙氨酸氨基转移酶",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "AST",
+      "unit": "U/L",
+      "group": "biochem",
+      "Wanbei": "AST",
+      "Anyi": "天门冬氨酸氨基转移酶",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "ALP",
+      "unit": "U/L",
+      "group": "biochem",
+      "Wanbei": "ALP",
+      "Anyi": "碱性磷酸酶",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "GGT",
+      "unit": "U/L",
+      "group": "biochem",
+      "Wanbei": "GGT",
+      "Anyi": "γ-谷氨酰转移酶",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "TBIL",
+      "unit": "umol/L",
+      "group": "biochem",
+      "Wanbei": "TBIL",
+      "Anyi": "总胆红素",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "Na",
+      "unit": "mmol/L",
+      "group": "biochem",
+      "Wanbei": "Na",
+      "Anyi": "钠",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "K",
+      "unit": "mmol/L",
+      "group": "biochem",
+      "Wanbei": "K",
+      "Anyi": "钾",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "Cl",
+      "unit": "mmol/L",
+      "group": "biochem",
+      "Wanbei": "Cl",
+      "Anyi": "氯",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "Ca",
+      "unit": "mmol/L",
+      "group": "biochem",
+      "Wanbei": "ZCA",
+      "Anyi": "钙",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "GLU",
+      "unit": "mmol/L",
+      "group": "biochem",
+      "Wanbei": "GLU",
+      "Anyi": "葡萄糖",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "LDH",
+      "unit": "U/L",
+      "group": "biochem",
+      "Wanbei": "LDH",
+      "Anyi": "乳酸脱氢酶",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "P",
+      "unit": "mmol/L",
+      "group": "biochem",
+      "Wanbei": null,
+      "Anyi": "磷",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "CO2",
+      "unit": "mmol/L",
+      "group": "biochem",
+      "Wanbei": "ECO2",
+      "Anyi": "碳酸氢根",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "HbA1c",
+      "unit": "%",
+      "group": "hba1c",
+      "Wanbei": "HbA1c",
+      "Anyi": "糖化血红蛋白",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "TC",
+      "unit": "mmol/L",
+      "group": "lipid",
+      "Wanbei": "CHOL",
+      "Anyi": "总胆固醇",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "HDL-C",
+      "unit": "mmol/L",
+      "group": "lipid",
+      "Wanbei": "HDL",
+      "Anyi": "高密度脂蛋白胆固醇",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "LDL-C",
+      "unit": "mmol/L",
+      "group": "lipid",
+      "Wanbei": "LDL-C",
+      "Anyi": "低密度脂蛋白胆固醇",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "TG",
+      "unit": "mmol/L",
+      "group": "lipid",
+      "Wanbei": "TG",
+      "Anyi": "甘油三酯",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    },
+    {
+      "canonical": "Non-HDL-C",
+      "unit": "mmol/L",
+      "group": "lipid",
+      "Wanbei": null,
+      "Anyi": "非高密度脂蛋白胆固醇",
+      "factor_Wanbei": 1,
+      "factor_Anyi": 1
+    }
+  ],
+  "historical_search_space": {
+    "LR": {
+      "C": [
+        0.01,
+        0.1,
+        1,
+        10,
+        100
+      ],
+      "penalty": [
+        "l1",
+        "l2"
+      ]
+    },
+    "SVM": {
+      "C": [
+        0.1,
+        1,
+        10,
+        100
+      ],
+      "gamma": [
+        "scale",
+        0.01,
+        0.1
+      ]
+    },
+    "KNN": {
+      "n_neighbors": [
+        5,
+        15,
+        25,
+        45
+      ],
+      "weights": [
+        "uniform",
+        "distance"
+      ],
+      "p": [
+        1,
+        2
+      ]
+    },
+    "DT": {
+      "max_depth": [
+        3,
+        5,
+        8
+      ],
+      "min_samples_leaf": [
+        5,
+        10,
+        20
+      ],
+      "criterion": [
+        "gini",
+        "entropy"
+      ]
+    },
+    "RF": {
+      "max_depth": [
+        5,
+        10,
+        null
+      ],
+      "min_samples_leaf": [
+        2,
+        5
+      ],
+      "max_features": [
+        "sqrt",
+        0.7
+      ]
+    },
+    "XGBoost": {
+      "n_estimators": [
+        150,
+        300
+      ],
+      "learning_rate": [
+        0.03,
+        0.1
+      ],
+      "max_depth": [
+        2,
+        3
+      ],
+      "min_child_weight": [
+        1,
+        5
+      ]
+    },
+    "LightGBM": {
+      "n_estimators": [
+        150,
+        300
+      ],
+      "learning_rate": [
+        0.03,
+        0.1
+      ],
+      "num_leaves": [
+        7,
+        15
+      ],
+      "min_child_samples": [
+        20,
+        40
+      ]
+    }
+  }
+}

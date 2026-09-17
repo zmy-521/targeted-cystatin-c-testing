@@ -1,0 +1,43 @@
+# Copy this file OUTSIDE the repository; supply private local paths there.
+mode: paper_reproduction
+output_dir: ./private_run
+cohorts:
+  development:
+    path: ./development.parquet
+    input_mode: index
+    # Canonical name -> private source column; omitted names map to themselves.
+    columns: {}
+    # Optional explicit recoding: value_maps: {sex: {female: 0, male: 1}}
+    value_maps: {}
+    # Explicit multiplier to dictionary units. Example for SCr in umol/L:
+    # divisors: {SCr_mg_dL: 88.4}
+    factors: {}
+    # Exact frozen tie order, encoded as uint64 decimal strings (not float).
+    tie_key_column: tie_key
+    # Alternative, local only: private_study_key_column: study_id
+    # Optional source-adjudicated 0/1 flag; all CBC fields set NA when 1.
+    invalid_cbc_column: null
+    attestations:
+      one_index_per_patient: false
+      adult_diabetes: false
+      same_specimen_scr_cysc: false
+      frozen_time_window: false
+      cbc_window_minus7_to0: false
+      source_qc_resolved: false
+      frozen_row_order: false
+  external:
+    path: ./external.parquet
+    input_mode: index
+    columns: {}
+    value_maps: {}
+    factors: {}
+    tie_key_column: tie_key
+    invalid_cbc_column: null
+    attestations:
+      one_index_per_patient: false
+      adult_diabetes: false
+      same_specimen_scr_cysc: false
+      frozen_time_window: false
+      cbc_window_minus7_to0: false
+      source_qc_resolved: false
+      frozen_row_order: false
